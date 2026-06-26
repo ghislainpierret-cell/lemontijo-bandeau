@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Actualités Le Montijo</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: transparent; overflow: hidden; }
+
+.bandeau {
+  background: #2c3a4a;
+  color: #fff;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.bandeau-label {
+  background: #4a7fa5;
+  color: #fff;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0 14px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  flex-shrink: 0;
+  z-index: 2;
+}
+
+.bandeau-track {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+}
+
+.bandeau-content {
+  display: inline-flex;
+  align-items: center;
+  height: 100%;
+  white-space: nowrap;
+  animation: defilement 40s linear infinite;
+  will-change: transform;
+}
+
+.bandeau-content:hover {
+  animation-play-state: paused;
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 40px;
+  font-size: 13px;
+  color: #eef1f5;
+  gap: 10px;
+}
+
+.item-date {
+  background: #4a7fa5;
+  color: #fff;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 3px 9px;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+.item-date.orange { background: #c47e1a; }
+.item-date.rouge  { background: #b83232; }
+
+.separateur {
+  color: #4a7fa5;
+  font-size: 18px;
+  padding: 0 10px;
+}
+
+@keyframes defilement {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+</style>
+</head>
+<body>
+<div class="bandeau">
+  <div class="bandeau-label">📅 Agenda</div>
+  <div class="bandeau-track">
+    <div class="bandeau-content">
+
+      <!-- Bloc 1 — répété deux fois pour boucle continue -->
+      <span class="item">
+        <span class="item-date">3 juillet</span>
+        🌿 Ouverture du Parc du Chili — En face de la résidence — Détente, buvette, minigolf, pêche à la truite
+      </span>
+      <span class="separateur">◆</span>
+      <span class="item">
+        <span class="item-date orange">9 juillet</span>
+        🚴 Tour de France 2026 — Étape Pau–Gavarnie — Le peloton passe par Luz-Saint-Sauveur !
+      </span>
+      <span class="separateur">◆</span>
+      <span class="item">
+        <span class="item-date rouge">10 – 13 juillet</span>
+        🎷 Jazz à Luz — Quatre soirées de concerts au cœur de la ville
+      </span>
+      <span class="separateur">◆</span>
+
+      <!-- Répétition pour boucle fluide -->
+      <span class="item">
+        <span class="item-date">3 juillet</span>
+        🌿 Ouverture du Parc du Chili — En face de la résidence — Détente, buvette, minigolf, pêche à la truite
+      </span>
+      <span class="separateur">◆</span>
+      <span class="item">
+        <span class="item-date orange">9 juillet</span>
+        🚴 Tour de France 2026 — Étape Pau–Gavarnie — Le peloton passe par Luz-Saint-Sauveur !
+      </span>
+      <span class="separateur">◆</span>
+      <span class="item">
+        <span class="item-date rouge">10 – 13 juillet</span>
+        🎷 Jazz à Luz — Quatre soirées de concerts au cœur de la ville
+      </span>
+      <span class="separateur">◆</span>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>
