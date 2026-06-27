@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thermes de Luz-Saint-Sauveur — Luzéa</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Georgia, 'Times New Roman', serif; background: #f4f5f7; color: #2a2d35; line-height: 1.65; font-size: 15px; }
+.page { max-width: 780px; margin: 0 auto; padding: 1.8rem 1.4rem 3rem; }
+
+/* Titres */
+h2 { font-family: Georgia, serif; font-size: 1.9rem; font-weight: normal; color: #2c3a4a; margin-bottom: 0.3rem; }
+h3 { font-family: Arial, sans-serif; font-size: 11px; font-weight: normal; color: #9aa0ad; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.8rem; }
+h4 { font-family: Arial, sans-serif; font-size: 13px; font-weight: bold; color: #6b5a3e; margin: 1.6rem 0 0.8rem; padding-bottom: 0.4rem; border-bottom: 1px solid #e0d8cc; text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* Intro */
+.intro { border-left: 3px solid #8B6914; background: #fdf8f0; padding: 1rem 1.2rem; margin-bottom: 1.8rem; font-style: italic; font-size: 14px; color: #5c4a2a; }
+
+/* Horaires */
+.horaires { background: #2c3a4a; color: #fff; border-radius: 6px; padding: 1.1rem 1.3rem; margin-bottom: 1.5rem; }
+.horaires-title { font-family: Arial, sans-serif; font-size: 11px; font-weight: bold; letter-spacing: 0.1em; text-transform: uppercase; color: #8fafc8; margin-bottom: 0.6rem; }
+.horaires ul { list-style: none; }
+.horaires li { font-family: Arial, sans-serif; font-size: 13px; color: #dde1e8; padding: 0.2rem 0; }
+.horaires li::before { content: "◆ "; color: #4a7fa5; font-size: 10px; }
+.contact { font-family: Arial, sans-serif; font-size: 12px; color: #8fafc8; margin-top: 0.6rem; }
+
+/* Grille tarifs */
+.tarif-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 1rem; }
+.tarif-card { background: #fff; border: 1px solid #e0d8cc; border-radius: 6px; padding: 0.75rem 1rem; }
+.tarif-card-full { background: #fff; border: 1px solid #e0d8cc; border-radius: 6px; padding: 0.75rem 1rem; margin-bottom: 10px; }
+.tarif-label { font-family: Arial, sans-serif; font-size: 10px; font-weight: bold; color: #9aa0ad; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem; }
+.tarif-row { display: flex; justify-content: space-between; align-items: baseline; font-family: Arial, sans-serif; font-size: 13px; color: #3a3f4a; padding: 0.2rem 0; border-bottom: 0.5px solid #f0ece3; }
+.tarif-row:last-child { border-bottom: none; }
+.tarif-price { font-weight: bold; color: #6b5a3e; font-size: 15px; }
+
+/* Soins */
+.soin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 0.5rem; }
+.soin { background: #fff; border: 1px solid #e0d8cc; border-left: 4px solid #8B6914; border-radius: 4px; padding: 0.75rem 0.9rem; }
+.soin-prix { font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; color: #6b5a3e; }
+.soin-nom { font-family: Arial, sans-serif; font-size: 12px; font-weight: bold; color: #2a2d35; margin: 0.2rem 0 0.3rem; }
+.soin-desc { font-family: Arial, sans-serif; font-size: 11px; color: #6b7280; line-height: 1.45; }
+.soin-desc li { margin-left: 0.8rem; }
+
+/* Escapades */
+.escapade { background: #fff; border: 1px solid #e0d8cc; border-radius: 6px; padding: 1rem 1.2rem; margin-bottom: 10px; }
+.escapade-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.6rem; }
+.escapade-nom { font-family: Arial, sans-serif; font-size: 13px; font-weight: bold; color: #2c3a4a; }
+.escapade-duree { font-family: Arial, sans-serif; font-size: 11px; color: #9aa0ad; }
+.escapade-prix { font-family: Arial, sans-serif; font-size: 12px; color: #6b5a3e; font-weight: bold; white-space: nowrap; margin-left: 1rem; }
+.escapade-desc { font-family: Arial, sans-serif; font-size: 12px; color: #555b6a; line-height: 1.5; }
+.jour { font-family: Arial, sans-serif; font-size: 11px; font-weight: bold; color: #4a7fa5; margin: 0.4rem 0 0.2rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* Info pratiques */
+.info-box { background: #fdf8f0; border: 1px solid #e0d8cc; border-radius: 6px; padding: 1rem 1.2rem; margin-bottom: 10px; font-family: Arial, sans-serif; font-size: 13px; color: #3a3f4a; }
+.info-box strong { color: #6b5a3e; }
+
+hr { border: none; border-top: 1px solid #dde1e8; margin: 1.8rem 0; }
+.section-label { font-family: Arial, sans-serif; font-size: 10px; font-weight: bold; letter-spacing: 0.12em; text-transform: uppercase; color: #9aa0ad; margin-bottom: 0.7rem; }
+footer { text-align: center; font-family: Arial, sans-serif; font-size: 11px; color: #aab0bb; border-top: 1px solid #dde1e8; padding-top: 1.2rem; margin-top: 2.5rem; }
+p { font-size: 13px; color: #555b6a; line-height: 1.6; margin-bottom: 0.5rem; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <h2>Luzéa — Thermes de Luz-Saint-Sauveur</h2>
+  <h3>Centre de Bien-être · 31 avenue de l'Impératrice Eugénie</h3>
+
+  <div class="intro">
+    Profitez en toute liberté de nos installations dédiées à la détente et au bien-être : piscine, bain à remous,
+    sauna, hammam oriental, bains romains, banquettes de marbre chauffantes.
+    L'eau thermale de Luzéa, naturellement chaude, est réputée pour ses propriétés sédatives et adoucissantes.
+  </div>
+
+  <!-- HORAIRES -->
+  <div class="horaires">
+    <div class="horaires-title">Horaires d'ouverture</div>
+    <ul>
+      <li>Saison d'hiver : tous les jours de 15h à 19h30</li>
+      <li>Vacances de Noël et février : ouverture supplémentaire 10h–12h30</li>
+      <li>Avril à octobre : lundi au samedi de 15h à 19h30</li>
+      <li>Mi-juillet à mi-août : ouverture supplémentaire matin 10h–12h30</li>
+    </ul>
+    <div class="contact">📞 05 62 92 81 58 · thermes@luz.org · www.luzea.fr</div>
+  </div>
+
+  <!-- ESPACE BIEN-ÊTRE -->
+  <div class="section-label">Espace Bien-être — Tarifs d'entrée</div>
+  <div class="tarif-grid">
+    <div class="tarif-card">
+      <div class="tarif-label">Entrées individuelles</div>
+      <div class="tarif-row"><span>Adulte</span><span class="tarif-price">18 €</span></div>
+      <div class="tarif-row"><span>Duo</span><span class="tarif-price">35 €</span></div>
+      <div class="tarif-row"><span>Jeune 15–17 ans / étudiant</span><span class="tarif-price">14,40 €</span></div>
+      <div class="tarif-row"><span>Enfant 5–14 ans</span><span class="tarif-price">10 €</span></div>
+    </div>
+    <div class="tarif-card">
+      <div class="tarif-label">Pass 10 entrées</div>
+      <div class="tarif-row"><span>Adulte</span><span class="tarif-price">144 €</span></div>
+      <div class="tarif-row"><span>Enfant</span><span class="tarif-price">80 €</span></div>
+    </div>
+  </div>
+  <div class="tarif-card-full">
+    <div class="tarif-label">Pass Famille</div>
+    <div class="tarif-row"><span>1 adulte + 1 enfant</span><span class="tarif-price">26,60 €</span></div>
+    <div class="tarif-row"><span>1 adulte + 2 enfants</span><span class="tarif-price">34,20 €</span></div>
+    <div class="tarif-row"><span>2 adultes + 1 enfant</span><span class="tarif-price">41,40 €</span></div>
+    <div class="tarif-row"><span>2 adultes + 2 enfants</span><span class="tarif-price">44,80 €</span></div>
+    <div class="tarif-row"><span>Enfant supplémentaire</span><span class="tarif-price">+ 8 €</span></div>
+  </div>
+  <p>Enfants autorisés à partir de 5 ans. Prêt de serviettes inclus.</p>
+
+  <hr>
+
+  <!-- ÉCHAPPÉES BELLES THERMALES -->
+  <div class="section-label">Échappées Belles Thermales</div>
+  <p>L'accès quotidien à l'espace Balnéo (bassin ludique, bain à remous, sauna et hammam) est inclus dans chaque échappée.</p>
+  <div class="soin-grid" style="margin-top:0.8rem">
+    <div class="soin">
+      <div class="soin-prix">36 €</div>
+      <div class="soin-nom">THERMALE</div>
+      <div class="soin-desc">Hydromassage en cabine individuelle avec chromothérapie (20 mn) · Parcours hydrotonic d'eau thermale</div>
+    </div>
+    <div class="soin">
+      <div class="soin-prix">50 €</div>
+      <div class="soin-nom">APAISANTE</div>
+      <div class="soin-desc">Hydromassage (20 mn) · Massage sur lit d'eau en apesanteur (30 mn)</div>
+    </div>
+    <div class="soin">
+      <div class="soin-prix">54 €</div>
+      <div class="soin-nom">JEUNESSE DES JAMBES</div>
+      <div class="soin-desc">Hydromassage (20 mn) · Modelage jambes légères (30 mn)</div>
+    </div>
+    <div class="soin">
+      <div class="soin-prix">58 €</div>
+      <div class="soin-nom">PLÉNITUDE</div>
+      <div class="soin-desc">Hydromassage (20 mn) · Modelage manuel relaxant (30 mn)</div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- SOINS CORPS -->
+  <div class="section-label">Échappées Belles Bien-Être · Corps</div>
+  <div class="soin-grid">
+    <div class="soin">
+      <div class="soin-prix">39 €</div>
+      <div class="soin-nom">AMMA</div>
+      <div class="soin-desc">Modelage du dos en position assise pour libérer les contractures dorsales et cervicales (20 mn)</div>
+    </div>
+    <div class="soin">
+      <div class="soin-prix">53 €</div>
+      <div class="soin-nom">DOUCEUR</div>
+      <div class="soin-desc">Modelage manuel relaxant (30 mn)</div>
+    </div>
+    <div class="soin">
+      <div class="soin-prix">65 €</div>
+      <div class="soin-nom">NIRVANESQUE</div>
+      <div class="soin-desc">Modelage manuel de l'ensemble du corps et du visage pour lâcher toutes les tensions (45 mn)</div>
+    </div>
+    <div class="soin">
+      <div class="soin-prix">16 €</div>
+      <div class="soin-nom">HYDROMASSAGE</div>
+      <div class="soin-desc">Cabine individuelle d'eau thermale avec chromothérapie (20 mn)</div>
+    </div>
+    <div class="soin">
+      <div class="soin-prix">22 €</div>
+      <div class="soin-nom">HYDROJET LIT D'EAU</div>
+      <div class="soin-desc">Matelas d'eau épousant le corps, massage des cervicales aux mollets (30 mn)</div>
+    </div>
+  </div>
+
+  <div class="section-label" style="margin-top:1rem">Modelages &amp; Rituels Corps</div>
+  <div class="soin-grid">
+    <div class="soin">
+      <div class="soin-prix">43 €</div>
+      <div class="soin-nom">MANUEL RELAXANT</div>
+      <div class="soin-desc">30 mn</div>
+    </div>
+    <div class="soin">
+      <div class="soin-prix">55 €</div>
+      <div class="soin-nom">NIRVANESQUE VISAGE &amp; CORPS</div>
+      <div class="soin-desc">45 mn</div>
+    </div>
+    <div class="soin">
+      <div class="soin-prix">60 €</div>
+      <div class="soin-nom">LOMI LOMI</div>
+      <div class="soin-desc">Modelage traditionnel hawaïen avec les avant-bras (50 mn)</div>
+    </div>
+    <div class="soin">
+      <div class="soin-prix">59 €</div>
+      <div class="soin-nom">ÉVASION GOURMANDE</div>
+      <div class="soin-desc">Beurre de sel exfoliant · Gommage · Modelage du corps (45 mn)</div>
+    </div>
+    <div class="soin">
+      <div class="soin-prix">75 €</div>
+      <div class="soin-nom">SIGNATURE MINÉRALE</div>
+      <div class="soin-desc">Plantes minérales de la mer Morte · Gommage · Douche jet thermale · Modelage (1h)</div>
+    </div>
+    <div class="soin">
+      <div class="soin-prix">93 €</div>
+      <div class="soin-nom">PIERRES CHAUDES</div>
+      <div class="soin-desc">Modelage aux pierres de lave chaudes (1h15)</div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- SOINS VISAGE -->
+  <div class="section-label">Soins Visage</div>
+  <div class="soin-grid">
+    <div class="soin">
+      <div class="soin-prix">55 €</div>
+      <div class="soin-nom">COUP D'ÉCLAT</div>
+      <div class="soin-desc">Soin énergisant · Gommage · Modelage minéral · Masque hydratant (45 mn)</div>
+    </div>
+    <div class="soin">
+      <div class="soin-prix">70 €</div>
+      <div class="soin-nom">RITUEL DOUCEUR</div>
+      <div class="soin-desc">Produits mer Morte · Peeling régénérateur · Modelage · Masque purifiant (1h)</div>
+    </div>
+    <div class="soin">
+      <div class="soin-prix">35–180 €</div>
+      <div class="soin-nom">ENDERMOLIFT</div>
+      <div class="soin-desc">Redensifie la peau · Stimule collagène et élasticité. 1 séance 35 € · 3 séances 95 € · 6 séances 180 €</div>
+    </div>
+    <div class="soin">
+      <div class="soin-prix">45–240 €</div>
+      <div class="soin-nom">NU SKIN anti-âge</div>
+      <div class="soin-desc">Courants galvaniques · Teint illuminé, visage modelé, rides diminuées. 1 séance 45 € · 3 séances 120 € · 6 séances 240 €</div>
+    </div>
+  </div>
+
+  <div class="section-label" style="margin-top:1rem">Cellu M6 Corps — Lipomassage</div>
+  <div class="info-box">
+    <strong>CELLU M6</strong> — Déstocker, raffermir, re-sculpter et lisser.<br>
+    1 séance : <strong>45 €</strong> · 3 séances : <strong>115 €</strong> · 6 séances : <strong>216 €</strong>
+  </div>
+
+  <hr>
+
+  <!-- ESCAPADES -->
+  <div class="section-label">Escapades 2 et 3 jours</div>
+  <p>L'accès quotidien à l'espace Balnéo est inclus dans chaque escapade.</p>
+
+  <div class="escapade" style="margin-top:0.8rem">
+    <div class="escapade-header">
+      <div><div class="escapade-nom">Escapade Revitalisante</div><div class="escapade-duree">2 jours</div></div>
+      <div class="escapade-prix">Solo 120 € · Duo 198 €</div>
+    </div>
+    <div class="escapade-desc">
+      <div class="jour">1er jour</div>Hydromassage · Modelage manuel relaxant
+      <div class="jour">2e jour</div>Hydromassage · Parcours hydrotonic · Gommage suivi d'un modelage <em>ou</em> Massage hydrojet sur lit d'eau
+    </div>
+  </div>
+
+  <div class="escapade">
+    <div class="escapade-header">
+      <div><div class="escapade-nom">Escapade Nirvanesque</div><div class="escapade-duree">2 jours</div></div>
+      <div class="escapade-prix">Solo 175 € · Duo 310 €</div>
+    </div>
+    <div class="escapade-desc">
+      <div class="jour">1er jour</div>Hydromassage · Modelage nirvanesque visage et corps
+      <div class="jour">2e jour</div>Massage hydrojet sur lit d'eau · Évasion gourmande (gommage et modelage)
+    </div>
+  </div>
+
+  <div class="escapade">
+    <div class="escapade-header">
+      <div><div class="escapade-nom">Escapade Découverte</div><div class="escapade-duree">3 jours</div></div>
+      <div class="escapade-prix">Solo 89 € · Duo 150 €</div>
+    </div>
+    <div class="escapade-desc">Soin individuel quotidien et accès à l'espace forme. Hydromassage · Parcours hydrotonic · Modelage manuel relaxant · Massage hydrojet</div>
+  </div>
+
+  <div class="section-label" style="margin-top:1rem">Escapades 5 jours</div>
+
+  <div class="escapade">
+    <div class="escapade-header">
+      <div><div class="escapade-nom">Escapade Silhouette Minceur</div><div class="escapade-duree">5 jours</div></div>
+      <div class="escapade-prix">Solo 365 € · Duo 650 €</div>
+    </div>
+    <div class="escapade-desc">Stratégie de remodelage du corps. Séances Cellu M6 · Hydromassages · Douche pression thermale · Gommage et modelage corps · Modelage jeunesse des jambes</div>
+  </div>
+
+  <div class="escapade">
+    <div class="escapade-header">
+      <div><div class="escapade-nom">Escapade Bien-être</div><div class="escapade-duree">5 jours</div></div>
+      <div class="escapade-prix">Solo 320 € · Duo 570 €</div>
+    </div>
+    <div class="escapade-desc">Programme anti-stress : hydrothérapie, relaxation, modelages. Hydromassages · Modelage nirvanesque · Stretching · Relaxation · Gommage · Amma · Modelage ventre-buste-visage · Parcours hydrotonic</div>
+  </div>
+
+  <hr>
+
+  <!-- SPORT -->
+  <div class="section-label">Sport · Forme et Santé</div>
+  <div class="soin-grid">
+    <div class="soin">
+      <div class="soin-prix">10,50 €</div>
+      <div class="soin-nom">AQUAGYM 45 mn</div>
+      <div class="soin-desc">1 séance · Pass 10 séances + 1 gratuite : 105 €</div>
+    </div>
+    <div class="soin">
+      <div class="soin-prix">12 €</div>
+      <div class="soin-nom">AQUABIKE 45 mn</div>
+      <div class="soin-desc">Sur réservation · 1 séance · 10 séances + 1 gratuite : 120 €</div>
+    </div>
+    <div class="soin">
+      <div class="soin-prix">10,50 €</div>
+      <div class="soin-nom">GYM 45 mn</div>
+      <div class="soin-desc">1 séance · 10 séances + 1 gratuite : 105 €. Abonnements disponibles.</div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- INFOS PRATIQUES -->
+  <div class="section-label">Informations pratiques</div>
+  <div class="info-box">
+    <strong>Nos tarifs comprennent :</strong> prêt de serviettes pour la balnéo · peignoir et serviette pour les échappées et rituels.<br><br>
+    <strong>Prévoir :</strong> maillot de bain (uniquement boxer ou slip) · sandales ou tongs.<br><br>
+    <strong>À savoir :</strong> le temps d'habillage et de déshabillage est compris dans la durée des soins.<br><br>
+    <strong>Les PLUZ de Luzéa :</strong> accès balnéo 10 € pour l'achat de soins individuels · accès gratuit aux cours de gym avec l'Escapade Silhouette · tarifs préférentiels CE, groupe, partenaires.<br><br>
+    <strong>Formules tout compris :</strong> La Boutique des Pyrénées — 05 62 56 70 00 · laboutique@ha-py.fr
+  </div>
+
+  <footer>
+    Luzéa · 31 avenue de l'Impératrice Eugénie · 65120 Luz-Saint-Sauveur · 05 62 92 81 58 · www.luzea.fr<br>
+    <span style="font-size:10px">Tarifs applicables à partir de décembre 2023 — document non contractuel</span>
+  </footer>
+
+</div>
+</body>
+</html>
