@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Montagne &amp; Randonnée — Le Montijo, Luz-Saint-Sauveur</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  background: #f4f5f7;
+  color: #2a2d35;
+  line-height: 1.65;
+  font-size: 15px;
+}
+
+/* ── Hero ardoise ── */
+.hero {
+  background: #2c3a4a;
+  padding: 2.8rem 2rem 2.2rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero-mountains {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  opacity: 0.13; pointer-events: none;
+}
+.hero-eyebrow {
+  font-family: 'Arial Narrow', Arial, sans-serif;
+  font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: #8fafc8; margin-bottom: 0.8rem;
+  display: flex; align-items: center; gap: 8px;
+}
+.hero-eyebrow::before {
+  content: ''; display: inline-block;
+  width: 24px; height: 1px; background: #8fafc8;
+}
+.hero h1 {
+  font-family: Georgia, serif;
+  font-size: 2.4rem; font-weight: normal;
+  color: #eef1f5; line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+.hero-sub {
+  font-family: Arial, sans-serif;
+  font-size: 13px; color: #7a9ab8;
+  margin-top: 0.6rem;
+}
+
+/* ── Layout ── */
+.page { max-width: 760px; margin: 0 auto; padding: 0 1.2rem 3rem; }
+
+/* ── Intro ── */
+.intro {
+  border-left: 3px solid #4a6f8f;
+  padding: 1rem 1.2rem;
+  margin: 1.8rem 0;
+  background: #e8edf3;
+  font-size: 14px; color: #3a3f4a;
+  font-style: italic;
+}
+
+/* ── Section headers ── */
+.level-block { margin: 2rem 0; }
+.level-head {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 1rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid #d5d9e0;
+}
+.level-pip {
+  width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+}
+.level-title {
+  font-family: Arial, sans-serif;
+  font-size: 15px; font-weight: bold; color: #2a2d35;
+}
+.level-note {
+  font-family: Arial, sans-serif;
+  font-size: 12px; color: #8a9099; margin-left: auto;
+}
+
+/* ── Cards ── */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+.card {
+  background: #fff;
+  border: 1px solid #dde1e8;
+  border-radius: 6px;
+  padding: 1rem 1rem 1rem 1.3rem;
+  position: relative;
+  overflow: hidden;
+}
+.card-bar {
+  position: absolute; top: 0; left: 0;
+  width: 5px; height: 100%;
+}
+.card-name {
+  font-family: Georgia, serif;
+  font-size: 15px; font-weight: bold; color: #2a2d35;
+  margin-bottom: 0.15rem;
+}
+.card-alt {
+  font-family: Arial, sans-serif;
+  font-size: 11px; color: #b0b5bf; font-style: italic;
+  margin-bottom: 0.55rem;
+}
+.card-stats {
+  display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 0.6rem;
+}
+.stat {
+  font-family: Arial, sans-serif;
+  font-size: 11px; padding: 2px 8px;
+  background: #edf0f5; color: #555b6a; border-radius: 3px;
+}
+.stat-warn {
+  background: #fff0e0; color: #b45309;
+}
+.card-desc {
+  font-size: 13px; color: #555b6a; line-height: 1.5;
+}
+
+/* niveaux : ardoise pour vert, orange et rouge inchangés */
+.pip-1 { background: #4a7fa5; }   /* ardoise moyen */
+.pip-2 { background: #c47e1a; }   /* ocre chaud */
+.pip-3 { background: #b83232; }   /* rouge montagne */
+
+.bar-1 { background: #4a7fa5; }
+.bar-2 { background: #c47e1a; }
+.bar-3 { background: #b83232; }
+
+/* ── Warning box ── */
+.warn {
+  border: 2px solid #c47800;
+  border-radius: 6px;
+  background: #fffbf0;
+  padding: 1.1rem 1.3rem;
+  margin: 2rem 0;
+  display: flex; gap: 14px; align-items: flex-start;
+}
+.warn-ico {
+  flex-shrink: 0;
+  width: 38px; height: 38px;
+  background: #c47800; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; color: #fff;
+}
+.warn-title {
+  font-family: Arial, sans-serif;
+  font-size: 13px; font-weight: bold;
+  color: #7c4700; margin-bottom: 0.4rem; text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.warn-body { font-size: 13px; color: #5c3a00; line-height: 1.55; }
+
+/* ── Seasons ── */
+.seasons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 0.8rem; }
+.season {
+  border-radius: 6px; padding: 0.85rem 0.8rem; text-align: center;
+}
+.season-icon { font-size: 26px; margin-bottom: 0.3rem; }
+.season-name {
+  font-family: Arial, sans-serif;
+  font-size: 12px; font-weight: bold; margin-bottom: 0.25rem;
+}
+.season-desc { font-size: 11px; line-height: 1.45; }
+
+/* ardoise pour juin au lieu de bleu générique */
+.s-june { background: #dce6f0; }
+.s-june .season-name { color: #2c3a4a; }
+.s-june .season-desc { color: #4a6f8f; }
+
+.s-aug { background: #fef3c7; }
+.s-aug .season-name { color: #92400e; }
+.s-aug .season-desc { color: #b45309; }
+
+.s-sep { background: #e8edf3; }
+.s-sep .season-name { color: #2c3a4a; }
+.s-sep .season-desc { color: #4a6f8f; }
+
+/* ── Tips ── */
+.tips { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px; margin-top: 0.8rem; }
+.tip {
+  background: #fff;
+  border: 1px solid #dde1e8;
+  border-radius: 6px; padding: 0.75rem;
+  font-size: 12px; color: #555b6a; line-height: 1.45;
+  display: flex; gap: 9px; align-items: flex-start;
+}
+.tip-ico { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.tip strong { display: block; font-family: Arial, sans-serif; font-size: 12px; color: #2a2d35; margin-bottom: 2px; }
+
+/* ── Emergency ── */
+.emergency {
+  background: #fff;
+  border: 1px solid #dde1e8;
+  border-radius: 6px; padding: 1rem 1.2rem;
+  margin-top: 0.8rem;
+}
+.emrg-row {
+  display: flex; align-items: baseline; gap: 10px;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid #edf0f5;
+  font-family: Arial, sans-serif;
+}
+.emrg-row:last-child { border-bottom: none; }
+.emrg-num { font-size: 16px; font-weight: bold; color: #b83232; min-width: 140px; }
+.emrg-label { font-size: 12px; color: #8a9099; }
+
+/* ── Dividers & labels ── */
+hr { border: none; border-top: 1px solid #d5d9e0; margin: 1.8rem 0; }
+.section-label {
+  font-family: Arial, sans-serif;
+  font-size: 10px; font-weight: bold; letter-spacing: 0.12em;
+  text-transform: uppercase; color: #9aa0ad;
+  margin-bottom: 0.7rem;
+}
+
+/* ── Footer ── */
+footer {
+  text-align: center; padding: 1.5rem 0 0.5rem;
+  font-family: Arial, sans-serif; font-size: 11px; color: #aab0bb;
+  border-top: 1px solid #d5d9e0;
+  margin-top: 2.5rem;
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <svg class="hero-mountains" viewBox="0 0 760 130" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <polygon points="0,130 90,25 180,85 280,5 390,60 480,0 590,55 670,15 760,70 760,130" fill="white"/>
+    <polygon points="0,130 70,55 160,105 240,38 340,88 430,22 530,72 620,32 710,62 760,42 760,130" fill="white" opacity="0.45"/>
+    <polygon points="280,5 258,32 302,32" fill="white" opacity="0.75"/>
+    <polygon points="480,0 456,30 504,30" fill="white" opacity="0.75"/>
+    <polygon points="670,15 652,38 688,38" fill="white" opacity="0.65"/>
+  </svg>
+  <div class="page">
+    <div class="hero-eyebrow">Le Montijo &middot; Luz-Saint-Sauveur</div>
+    <h1>Montagne &amp; Randonn&eacute;e</h1>
+    <div class="hero-sub">Hautes-Pyr&eacute;n&eacute;es &mdash; Parc National des Pyr&eacute;n&eacute;es &mdash; 700 m d'altitude</div>
+  </div>
+</div>
+
+<div class="page">
+
+  <div class="intro">
+    Luz-Saint-Sauveur est situ&eacute;e &agrave; la confluence de trois vall&eacute;es pyr&eacute;n&eacute;ennes, au c&oelig;ur du Pays Toy.
+    Acc&egrave;s imm&eacute;diat &agrave; des itin&eacute;raires pour tous les niveaux &mdash; du sentier familial au sommet d'alpinisme.
+  </div>
+
+  <!-- NIVEAU 1 -->
+  <div class="level-block">
+    <div class="level-head">
+      <div class="level-pip pip-1"></div>
+      <span class="level-title">Niveau 1 &mdash; Balades faciles</span>
+      <span class="level-note">Tous publics &bull; aucun &eacute;quipement sp&eacute;cial</span>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-bar bar-1"></div>
+        <div class="card-name">Boucle du Pays Toy</div>
+        <div class="card-alt">Bucle del Pays Toy</div>
+        <div class="card-stats">
+          <span class="stat">5,6 km</span>
+          <span class="stat">+200 m</span>
+          <span class="stat">1h30&ndash;2h</span>
+        </div>
+        <div class="card-desc">Villages d'Esterre, Viella, Villenave &bull; Ch&acirc;teau Sainte-Marie &bull; Chapelle de Solf&eacute;rino (Napol&eacute;on III). D&eacute;part &eacute;glise des Templiers, Luz.</div>
+      </div>
+      <div class="card">
+        <div class="card-bar bar-1"></div>
+        <div class="card-name">Circuit Napol&eacute;on &amp; Eug&eacute;nie</div>
+        <div class="card-alt">Circuito Napoléon y Eugenia</div>
+        <div class="card-stats">
+          <span class="stat">6,1 km</span>
+          <span class="stat">+191 m</span>
+          <span class="stat">2h20</span>
+        </div>
+        <div class="card-desc">Boucle au d&eacute;part du centre de Luz. Avenue de l'Imp&eacute;ratrice Eug&eacute;nie &bull; Pont Napol&eacute;on (63 m au-dessus du gave) &bull; Chemin balis&eacute; &laquo;&nbsp;Napol&eacute;on et Eug&eacute;nie&nbsp;&raquo; &bull; Chapelle Solf&eacute;rino &bull; &Eacute;glise fortifi&eacute;e des Templiers. Le circuit du Second Empire, &agrave; deux pas du Montijo.</div>
+      </div>
+      <div class="card">
+        <div class="card-bar bar-1"></div>
+        <div class="card-name">Cascades d'Agnou&egrave;de</div>
+        <div class="card-alt">Cascadas de Agnouède</div>
+        <div class="card-stats">
+          <span class="stat">5 km</span>
+          <span class="stat">+150 m</span>
+          <span class="stat">1h30</span>
+        </div>
+        <div class="card-desc">D&eacute;part hameau d'Agnou&egrave;de (5 min en voiture). Fond de vall&eacute;e ombrag&eacute; et frais. Id&eacute;al avec enfants d&egrave;s 5 ans.</div>
+      </div>
+      <div class="card">
+        <div class="card-bar bar-1"></div>
+        <div class="card-name">Lac des Esp&eacute;ci&egrave;res <small style="font-weight:normal;color:#aaa">2 195 m</small></div>
+        <div class="card-alt">Lago de las Especieras</div>
+        <div class="card-stats">
+          <span class="stat">~3 km A/R</span>
+          <span class="stat">d&eacute;nivel&eacute; minime</span>
+          <span class="stat">1h</span>
+        </div>
+        <div class="card-desc">D&eacute;part parking du col des Tentes (2&nbsp;207 m, 30 min de Gavarnie). Sentier &agrave; flanc presque plat, descente douce vers le lac. Accessible &agrave; tous. M&ecirc;me parking que la Br&egrave;che de Roland &mdash; monde en &eacute;t&eacute;, partir t&ocirc;t. Option&nbsp;: poursuivre jusqu'au col des Esp&eacute;ci&egrave;res pour la vue sur le versant espagnol.</div>
+      </div>
+      <div class="card">
+        <div class="card-bar bar-1"></div>
+        <div class="card-name">Lac de Gaube <small style="font-weight:normal;color:#aaa">1 725 m</small></div>
+        <div class="card-alt">Lago de Gaube</div>
+        <div class="card-stats">
+          <span class="stat">10 km A/R</span>
+          <span class="stat">+270 m</span>
+          <span class="stat">3&ndash;4h</span>
+        </div>
+        <div class="card-desc">D&eacute;part parking du Pont d'Espagne, Cauterets (45 min de Luz). Vignemale (3&nbsp;298 m) en fond de vall&eacute;e, h&ocirc;tellerie au bord du lac en saison. Site tr&egrave;s fr&eacute;quent&eacute; &mdash; partir t&ocirc;t.<br>
+        <strong>Option 1 &mdash; t&eacute;l&eacute;si&egrave;ge &agrave; la mont&eacute;e&nbsp;:</strong> t&eacute;l&eacute;cabine + t&eacute;l&eacute;si&egrave;ge (payant), puis 15 min de marche &agrave; plat jusqu'au lac. Id&eacute;al avec jeunes enfants ou personnes &agrave; mobilit&eacute; r&eacute;duite.<br>
+        <strong>Option 2 &mdash; GR10 &agrave; pied&nbsp;:</strong> sentier balisé 1h&ndash;1h30 depuis le Pont d'Espagne, caillouteux, quelques passages raides. <span style="color:#b45309">&#9651; Descente par le GR10 d&eacute;licate &mdash; marches rocheuses irreg&egrave;res, genoux sollicit&eacute;s. Pr&eacute;voir b&acirc;tons et chaussures mont&eacute;es.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- NIVEAU 2 -->
+  <div class="level-block">
+    <div class="level-head">
+      <div class="level-pip pip-2"></div>
+      <span class="level-title">Niveau 2 &mdash; Randonn&eacute;es interm&eacute;diaires</span>
+      <span class="level-note">Bonne condition physique</span>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-bar bar-2"></div>
+        <div class="card-name">Lac de Bastampe <small style="font-weight:normal;color:#aaa">2 019 m</small></div>
+        <div class="card-alt">Lago de Bastampe</div>
+        <div class="card-stats">
+          <span class="stat">12&ndash;13 km A/R</span>
+          <span class="stat">+1 050 m</span>
+          <span class="stat">4&ndash;5h</span>
+        </div>
+        <div class="card-desc">Depuis Agnou&egrave;de. Trac&eacute; GR10. Lac en cirque min&eacute;ral gris-bleu. Les panneaux de temps sur le sentier sont tr&egrave;s optimistes &mdash; calculez large.</div>
+      </div>
+      <div class="card">
+        <div class="card-bar bar-2"></div>
+        <div class="card-name">Pic de Bergons <small style="font-weight:normal;color:#aaa">2 068 m</small></div>
+        <div class="card-alt">Pico Bergons</div>
+        <div class="card-stats">
+          <span class="stat">10 km</span>
+          <span class="stat">+700 m</span>
+          <span class="stat">3h30&ndash;4h</span>
+        </div>
+        <div class="card-desc">Depuis les granges d'Astes. Panorama 360&deg; sur le Vignemale et Gavarnie. Mont&eacute;e soutenue, sans difficult&eacute; technique.</div>
+      </div>
+      <div class="card">
+        <div class="card-bar bar-2"></div>
+        <div class="card-name">Col de Riou <small style="font-weight:normal;color:#aaa">1 946 m</small></div>
+        <div class="card-alt">Puerto de Riou</div>
+        <div class="card-stats">
+          <span class="stat">+800 m</span>
+          <span class="stat">3&ndash;4h A/R</span>
+        </div>
+        <div class="card-desc">Vue sur les vall&eacute;es de Luz et de Cauterets. Itin&eacute;raire calme, peu fr&eacute;quent&eacute;.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- NIVEAU 3 -->
+  <div class="level-block">
+    <div class="level-head">
+      <div class="level-pip pip-3"></div>
+      <span class="level-title">Niveau 3 &mdash; Haute montagne</span>
+      <span class="level-note">Randonn&eacute;eurs exp&eacute;riment&eacute;s uniquement</span>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-bar bar-3"></div>
+        <div class="card-name">Lacs d'Ardiden <small style="font-weight:normal;color:#aaa">~2 200 m</small></div>
+        <div class="card-alt">Lagos de Ardiden</div>
+        <div class="card-stats">
+          <span class="stat">+1 050 m</span>
+          <span class="stat">5&ndash;6h A/R</span>
+          <span class="stat stat-warn">&#9651; N&eacute;v&eacute;s juin&ndash;juil.</span>
+        </div>
+        <div class="card-desc">Depuis les granges d'Aynis. Pied du Pic d'Ardiden (2 988 m). Terrain min&eacute;ral exigeant au-dessus de 2 000 m.</div>
+      </div>
+      <div class="card">
+        <div class="card-bar bar-3"></div>
+        <div class="card-name">Cirque de Gavarnie</div>
+        <div class="card-alt">Circo de Gavarnie</div>
+        <div class="card-stats">
+          <span class="stat">9 km A/R</span>
+          <span class="stat">+450 m</span>
+          <span class="stat">3&ndash;4h</span>
+        </div>
+        <div class="card-desc">Depuis Gavarnie (30 min en voiture). Site UNESCO. Grande Cascade 422 m &mdash; la plus haute de France. Partir t&ocirc;t en &eacute;t&eacute;.</div>
+      </div>
+      <div class="card">
+        <div class="card-bar bar-3"></div>
+        <div class="card-name">Petit Vignemale <small style="font-weight:normal;color:#aaa">3 032 m</small></div>
+        <div class="card-alt">Pequeño Vignemale</div>
+        <div class="card-stats">
+          <span class="stat">+1 900 m</span>
+          <span class="stat">Journ&eacute;e compl&egrave;te</span>
+          <span class="stat stat-warn">&#9651; Crampons + piolet</span>
+        </div>
+        <div class="card-desc">Depuis Pont d'Espagne ou vall&eacute;e de Lutour. N&eacute;v&eacute;s quasi certains avant fin juillet. Crampons et piolet obligatoires.</div>
+      </div>
+      <div class="card">
+        <div class="card-bar bar-3"></div>
+        <div class="card-name">Br&egrave;che de Roland <small style="font-weight:normal;color:#aaa">2 807 m</small></div>
+        <div class="card-alt">Brecha de Roldán</div>
+        <div class="card-stats">
+          <span class="stat">11 km A/R</span>
+          <span class="stat">+641 m</span>
+          <span class="stat">5h</span>
+          <span class="stat stat-warn">&#9651; N&eacute;v&eacute;s + glace</span>
+        </div>
+        <div class="card-desc">D&eacute;part col des Tentes (2&nbsp;207 m, 30 min de Gavarnie). Port de Boucharo &bull; Col des Sarradets &bull; Refuge des Sarradets (2&nbsp;577 m) &bull; ascension finale dans les rochers jusqu'&agrave; la br&egrave;che frontali&egrave;re. Le n&eacute;v&eacute; d'acc&egrave;s &agrave; la br&egrave;che est pr&eacute;sent une grande partie de la saison&nbsp;: crampons et piolet obligatoires, b&acirc;tons rang&eacute;s dans le sac. Tr&egrave;s fr&eacute;quent&eacute; les week-ends par beau temps &mdash; partir t&ocirc;t.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- AVERTISSEMENT -->
+  <div class="warn">
+    <div class="warn-ico">&#9888;</div>
+    <div>
+      <div class="warn-title">Crampons &amp; piolet &mdash; un bin&ocirc;me indissociable</div>
+      <div class="warn-body">
+        Sur toute pente enneig&eacute;e n&eacute;cessitant des crampons, le piolet est obligatoire &mdash; pas les b&acirc;tons de randonn&eacute;e. Les b&acirc;tons sont inefficaces pour arr&ecirc;ter une glissade sur neige dure ou glace. Le piolet permet l'auto-arr&ecirc;t, technique fondamentale de s&eacute;curit&eacute; en montagne. Sans ma&icirc;trise de cette technique, ne pas s'engager sur une telle pente sans accompagnateur qualifi&eacute;.
+      </div>
+    </div>
+  </div>
+
+  <!-- SAISONS -->
+  <div class="section-label">Conditions par saison</div>
+  <div class="seasons">
+    <div class="season s-june">
+      <div class="season-icon">&#10052;</div>
+      <div class="season-name">Juin &ndash; d&eacute;but juil.</div>
+      <div class="season-desc">N&eacute;v&eacute;s fr&eacute;quents au-dessus de 1&nbsp;800 m. Crampons + piolet si neige.</div>
+    </div>
+    <div class="season s-aug">
+      <div class="season-icon">&#9728;</div>
+      <div class="season-name">Juil. &ndash; ao&ucirc;t</div>
+      <div class="season-desc">Sentiers d&eacute;gag&eacute;s. Orages fr&eacute;quents d&egrave;s 14h. Rentrer avant sur les cr&ecirc;tes.</div>
+    </div>
+    <div class="season s-sep">
+      <div class="season-icon">&#127810;</div>
+      <div class="season-name">Septembre</div>
+      <div class="season-desc">Excellente p&eacute;riode. Moins de monde, lumi&egrave;re remarquable.</div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- CONSEILS -->
+  <div class="section-label">&Eacute;quipement &amp; conseils pratiques</div>
+  <div class="tips">
+    <div class="tip">
+      <span class="tip-ico">&#128094;</span>
+      <div><strong>Chaussures &mdash; point critique</strong>Chaussures de randonn&eacute;e montantes avec semelle crant&eacute;e obligatoires d&egrave;s le niveau 2. Les chaussures de trail, de sport ou de ville sont inadapt&eacute;es en terrain min&eacute;ral&nbsp;: semelle trop fine, tige trop basse, maintien de cheville insuffisant. En haute montagne, une cheville non maintenue sur terrain rocailleux ou neigeux peut entra&icirc;ner une chute grave.</div>
+    </div>
+    <div class="tip">
+      <span class="tip-ico">&#127783;</span>
+      <div><strong>M&eacute;t&eacute;o</strong>Imperm&eacute;able et couche chaude, m&ecirc;me en &eacute;t&eacute; en altitude. Consulter imp&eacute;rativement le bulletin m&eacute;t&eacute;o montagne avant chaque d&eacute;part &mdash; le temps peut se d&eacute;grader tr&egrave;s rapidement en altitude.</div>
+    </div>
+    <div class="tip">
+      <span class="tip-ico">&#128167;</span>
+      <div><strong>Eau</strong>Minimum 2 litres par personne. Sources non garanties.</div>
+    </div>
+    <div class="tip">
+      <span class="tip-ico">&#127774;</span>
+      <div><strong>Protection solaire</strong>Indispensable en altitude, m&ecirc;me par temps couvert.</div>
+    </div>
+    <div class="tip">
+      <span class="tip-ico">&#128506;</span>
+      <div><strong>Navigation</strong>Carte IGN papier 1/25&nbsp;000<sup>e</sup> et boussole indispensables &mdash; la batterie du t&eacute;l&eacute;phone peut lâcher en altitude et le r&eacute;seau est absent. Carte IGN num&eacute;rique hors ligne en compl&eacute;ment (apps&nbsp;: IGNrando ou Komoot). Option&nbsp;: GPS d&eacute;di&eacute;.</div>
+    </div>
+    <div class="tip">
+      <span class="tip-ico">&#128100;</span>
+      <div><strong>Guides</strong>Accompagnateurs agr&eacute;&eacute;s disponibles &agrave; l'office de tourisme pour le niveau 3.</div>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- URGENCES -->
+  <div class="section-label">Num&eacute;ros d'urgence</div>
+  <div class="emergency">
+    <div class="emrg-row">
+      <span class="emrg-num">04 62 42 92 99</span>
+      <span class="emrg-label">PGHM Lourdes &mdash; Secours en montagne</span>
+    </div>
+    <div class="emrg-row">
+      <span class="emrg-num">0892 68 10 65</span>
+      <span class="emrg-label">M&eacute;t&eacute;o montagne &mdash; &agrave; consulter avant chaque d&eacute;part</span>
+    </div>
+    <div class="emrg-row">
+      <span class="emrg-num">05 62 92 81 60</span>
+      <span class="emrg-label">Office de tourisme Luz-Saint-Sauveur</span>
+    </div>
+  </div>
+
+  <div style="margin-top:2rem;padding:0.9rem 1.1rem;background:#f0f1f4;border-left:3px solid #9aa0ad;border-radius:4px;font-family:Arial,sans-serif;font-size:11px;color:#6b7280;line-height:1.6;">
+    <strong style="display:block;margin-bottom:0.25rem;color:#4a5060;text-transform:uppercase;letter-spacing:0.06em;font-size:10px;">Avertissement</strong>
+    Les informations pr&eacute;sent&eacute;es sur cette page (itin&eacute;raires, distances, d&eacute;nivel&eacute;s, dur&eacute;es, conditions) sont issues de sources publiques disponibles sur internet et sont fournies &agrave; titre indicatif uniquement. Elles peuvent &ecirc;tre incompl&egrave;tes, inexactes ou ne plus refl&eacute;ter l'&eacute;tat actuel des sentiers. Le propri&eacute;taire du Montijo d&eacute;gage toute responsabilit&eacute; quant &agrave; l'utilisation de ces informations. Chaque randonneur est seul responsable de l'&eacute;valuation des conditions r&eacute;elles, de son niveau et de son &eacute;quipement avant de s'engager sur un itin&eacute;raire.
+  </div>
+
+  <footer>
+    Le Montijo &bull; 66 avenue de l'Imp&eacute;ratrice Eug&eacute;nie &bull; 65120 Luz-Saint-Sauveur
+  </footer>
+
+</div>
+</body>
+</html>
