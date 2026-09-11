@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Actualités Le Montijo</title>
+<title>Bandeau Le Montijo</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: transparent; overflow: hidden; }
+body { background: transparent; overflow: hidden; font-family: Arial, sans-serif; }
 
 .bandeau {
   background: #2c3a4a;
@@ -16,7 +16,6 @@ body { background: transparent; overflow: hidden; }
   align-items: center;
   overflow: hidden;
   width: 100%;
-  font-family: Arial, sans-serif;
 }
 
 .bandeau-label {
@@ -32,7 +31,6 @@ body { background: transparent; overflow: hidden; }
   align-items: center;
   white-space: nowrap;
   flex-shrink: 0;
-  z-index: 2;
 }
 
 .bandeau-track {
@@ -47,13 +45,10 @@ body { background: transparent; overflow: hidden; }
   align-items: center;
   height: 100%;
   white-space: nowrap;
-  animation: defilement 40s linear infinite;
-  will-change: transform;
+  animation: defilement 50s linear infinite;
 }
 
-.bandeau-content:hover {
-  animation-play-state: paused;
-}
+.bandeau-content:hover { animation-play-state: paused; }
 
 .item {
   display: inline-flex;
@@ -65,7 +60,6 @@ body { background: transparent; overflow: hidden; }
 }
 
 .item-date {
-  background: #4a7fa5;
   color: #fff;
   font-size: 11px;
   font-weight: bold;
@@ -74,14 +68,10 @@ body { background: transparent; overflow: hidden; }
   white-space: nowrap;
 }
 
-.item-date.orange { background: #c47e1a; }
-.item-date.rouge  { background: #b83232; }
+.date-ocre  { background: #c47e1a; }
+.date-vert  { background: #2e7d32; }
 
-.separateur {
-  color: #4a7fa5;
-  font-size: 18px;
-  padding: 0 10px;
-}
+.sep { color: #4a7fa5; font-size: 16px; padding: 0 10px; }
 
 @keyframes defilement {
   0%   { transform: translateX(0); }
@@ -95,69 +85,24 @@ body { background: transparent; overflow: hidden; }
   <div class="bandeau-track">
     <div class="bandeau-content">
 
-      <!-- Bloc 1 — répété deux fois pour boucle continue -->
-      <span class="item">
-        <span class="item-date">Juillet – Août</span>
-        🌿 Parc du Chili ouvert — En face de la résidence — Buvette, détente, mini-golf, pêche à la truite
-      </span>
-      <span class="separateur">◆</span>
-      <span class="item">
-        <span class="item-date rouge">14 juillet</span>
-        🎉 Fête nationale — Défilé et soirée festive à Luz-Saint-Sauveur et Esquièze-Sère
-      </span>
-      <span class="separateur">◆</span>
-      <span class="item">
-        <span class="item-date">22 juillet</span>
-        ⛪ Fête de Saint-Sauveur — Célébration dans le quartier historique
-      </span>
-      <span class="separateur">◆</span>
-      <span class="item">
-        <span class="item-date orange">Août</span>
-        🏰 Médiévales en Pays Toy — Animations au pied du Château Sainte-Marie (Esterre)
-      </span>
-      <span class="separateur">◆</span>
-      <span class="item">
-        <span class="item-date">15 août</span>
-        🎆 Soirée du 15 Août — Soirée festive au cœur de la vallée
-      </span>
-      <span class="separateur">◆</span>
-      <span class="item">
-        <span class="item-date orange">2 – 4 octobre</span>
-        🐑 Grande Foire des Côtelettes — Fête pastorale, mouton AOP Barèges-Gavarnie
-      </span>
-      <span class="separateur">◆</span>
+      <span class="item"><span class="item-date date-ocre">2–4 octobre</span>🐑 Grande Foire des Côtelettes — Fête pastorale, mouton AOP Barèges-Gavarnie</span>
+      <span class="sep">◆</span>
+      <span class="item"><span class="item-date date-vert">25 nov. 2026</span>⛷ Luz Ardiden — Ouverture de la station</span>
+      <span class="sep">◆</span>
+      <span class="item"><span class="item-date date-vert">27 nov. 2026</span>⛷ Cauterets — Ouverture de la station</span>
+      <span class="sep">◆</span>
+      <span class="item"><span class="item-date date-vert">5 déc. 2026</span>⛷ Grand Tourmalet — Ouverture de la station</span>
+      <span class="sep">◆</span>
 
       <!-- Répétition pour boucle fluide -->
-      <span class="item">
-        <span class="item-date">Juillet – Août</span>
-        🌿 Parc du Chili ouvert — En face de la résidence — Buvette, détente, mini-golf, pêche à la truite
-      </span>
-      <span class="separateur">◆</span>
-      <span class="item">
-        <span class="item-date rouge">14 juillet</span>
-        🎉 Fête nationale — Défilé et soirée festive à Luz-Saint-Sauveur et Esquièze-Sère
-      </span>
-      <span class="separateur">◆</span>
-      <span class="item">
-        <span class="item-date">22 juillet</span>
-        ⛪ Fête de Saint-Sauveur — Célébration dans le quartier historique
-      </span>
-      <span class="separateur">◆</span>
-      <span class="item">
-        <span class="item-date orange">Août</span>
-        🏰 Médiévales en Pays Toy — Animations au pied du Château Sainte-Marie (Esterre)
-      </span>
-      <span class="separateur">◆</span>
-      <span class="item">
-        <span class="item-date">15 août</span>
-        🎆 Soirée du 15 Août — Soirée festive au cœur de la vallée
-      </span>
-      <span class="separateur">◆</span>
-      <span class="item">
-        <span class="item-date orange">2 – 4 octobre</span>
-        🐑 Grande Foire des Côtelettes — Fête pastorale, mouton AOP Barèges-Gavarnie
-      </span>
-      <span class="separateur">◆</span>
+      <span class="item"><span class="item-date date-ocre">2–4 octobre</span>🐑 Grande Foire des Côtelettes — Fête pastorale, mouton AOP Barèges-Gavarnie</span>
+      <span class="sep">◆</span>
+      <span class="item"><span class="item-date date-vert">25 nov. 2026</span>⛷ Luz Ardiden — Ouverture de la station</span>
+      <span class="sep">◆</span>
+      <span class="item"><span class="item-date date-vert">27 nov. 2026</span>⛷ Cauterets — Ouverture de la station</span>
+      <span class="sep">◆</span>
+      <span class="item"><span class="item-date date-vert">5 déc. 2026</span>⛷ Grand Tourmalet — Ouverture de la station</span>
+      <span class="sep">◆</span>
 
     </div>
   </div>
