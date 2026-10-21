@@ -117,29 +117,35 @@ function afficher(d){
   $("maj").innerHTML = "Mis à jour à " + p(n.getHours()) + ":" + p(n.getMinutes());
 }
 
-function echec(){
+function echec(detail){
   // On garde le dernier affichage et on signale discrètement le problème
   $("maj").className = "err";
-  $("maj").innerHTML = "Connexion impossible — nouvel essai dans 1 min";
+  $("maj").innerHTML = "Connexion impossible (" + detail + ") — nouvel essai dans 1 min";
   setTimeout(charger, RETRY_MS);
 }
 
 function charger(){
   var x = new XMLHttpRequest(), fini = false;
-  x.open("GET", URL + "&_=" + new Date().getTime(), true);
-  x.timeout = 20000;
-  x.onreadystatechange = function(){
-    if (x.readyState !== 4 || fini) return;
-    fini = true;
-    if (x.status === 200) {
-      try { afficher(JSON.parse(x.responseText)); setTimeout(charger, REFRESH_MS); return; }
-      catch (e) {}
-    }
-    echec();
-  };
-  x.ontimeout = function(){ if (!fini) { fini = true; echec(); } };
-  x.send();
+  try {
+    x.open("GET", URL, true);
+    x.onreadystatechange = function(){
+      if (x.readyState !== 4 || fini) return;
+      fini = true;
+      if (x.status === 200) {
+        try { afficher(JSON.parse(x.responseText)); setTimeout(charger, REFRESH_MS); return; }
+        catch (e) { echec("lecture : " + e.message); return; }
+      }
+      echec(x.status === 0 ? "réseau, code 0" :
+            "code " + x.status + " : " + String(x.responseText).substring(0, 120));
+    };
+    x.send();
+  } catch (e) {
+    echec("envoi : " + e.message);
+  }
 }
+
+// Toucher la ligne du bas ouvre la demande brute dans Safari (diagnostic)
+$("maj").onclick = function(){ window.open(URL, "_blank"); };
 
 tick(); setInterval(tick, 10000);
 charger();
